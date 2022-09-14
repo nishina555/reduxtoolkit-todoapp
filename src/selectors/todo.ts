@@ -1,6 +1,7 @@
-import { AppState } from "../store/index";
 import { VisibilityFilterTypes } from "../types/state/visibilityFilter";
 import { VISIBILITY_FILTERS } from "../types/constants/visibilityFilterType";
+import { TodoState } from "../types/state/todos"
+// import { createSelector } from 'reselect';
 
 export type TodoItem = {
   content: string;
@@ -8,21 +9,22 @@ export type TodoItem = {
   id: number;
 };
 
-export const getTodoList = (store: AppState): Array<number> =>
-  store && store.todos ? store.todos.allIds : [];
+export const getTodoList = (todos: TodoState): Array<number> =>
+  todos ? todos.allIds : [];
 
-export const getTodoById = (store: AppState, id: number): TodoItem => {
-  return { ...store.todos.byId[id], id };
+export const getTodoById = (todos: TodoState, id: number): TodoItem => {
+  return { ...todos.byId[id], id };
 };
 
-export const getTodos = (store: AppState): Array<TodoItem> =>
-  getTodoList(store).map((id) => getTodoById(store, id));
+export const getTodos = (todos: TodoState): Array<TodoItem> =>
+  getTodoList(todos).map((id) => getTodoById(todos, id));
 
 export const getTodosByVisibilityFilter = (
-  store: AppState,
+  todos: TodoState,
   visibilityFilter: VisibilityFilterTypes
 ): TodoItem[] => {
-  const allTodos = getTodos(store);
+  console.log('selector')
+  const allTodos = getTodos(todos);
   switch (visibilityFilter) {
     case VISIBILITY_FILTERS.COMPLETED:
       return allTodos.filter((todo) => todo.completed);
