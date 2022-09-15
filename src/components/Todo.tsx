@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import { toggleTodo } from "../reducers/todosSlice";
-import { TodoItem } from "../selectors/todo";
+import { TodoItem } from "../types/state/todos";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store";
 
