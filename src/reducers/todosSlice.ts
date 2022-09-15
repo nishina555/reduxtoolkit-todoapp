@@ -18,6 +18,7 @@ const todosSlice = createSlice({
 
       state.allIds.push(id);
       state.byId[id] = {
+        id,
         content,
         completed: false,
       };
