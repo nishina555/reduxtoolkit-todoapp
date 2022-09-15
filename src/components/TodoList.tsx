@@ -4,6 +4,7 @@ import Todo from "./Todo";
 import { getTodosByVisibilityFilter } from "../selectors/todo";
 import { TodoItem } from "../types/state/todos";
 import { useSelector } from "react-redux";
+import styles from "./TodoList.module.css";
 
 const TodoList: React.FC = () => {
   // Before
@@ -16,7 +17,7 @@ const TodoList: React.FC = () => {
   const todos: Array<TodoItem> = useSelector(getTodosByVisibilityFilter);
 
   return (
-    <ul className="todo-list">
+    <ul className={styles.todoList}>
       {todos && todos.length
         ? todos.map((todo: TodoItem, index: number) => {
             return <Todo key={`todo-${todo.id}`} todo={todo} />;

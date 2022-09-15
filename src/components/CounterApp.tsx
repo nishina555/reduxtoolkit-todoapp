@@ -2,7 +2,7 @@ import { plusCount, minusCount } from "../reducers/countSlice";
 import { AppState } from "../store/index";
 import { AppDispatch } from "../store";
 import { useDispatch, useSelector } from "react-redux";
-import "../styles.css";
+import styles from "./CounterApp.module.css";
 
 export const CounterApp = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -18,17 +18,17 @@ export const CounterApp = () => {
   };
 
   return (
-    <div className="counter-app">
+    <>
       <h1>Count: {count}</h1>
       <div>
         <span></span>
-        <button className="counter-button" onClick={handlePlusCount}>
+        <button className={styles.counterButton} onClick={handlePlusCount}>
           +Count
         </button>
-        <button className="counter-button" onClick={handleMinusCount}>
+        <button className={styles.counterButton} onClick={handleMinusCount}>
           -Count
         </button>
       </div>
-    </div>
+    </>
   );
 };

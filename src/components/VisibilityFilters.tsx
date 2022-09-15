@@ -6,6 +6,7 @@ import { AppState } from "../store/index";
 import { VisibilityFilterTypes } from "../types/state/visibilityFilter";
 import { AppDispatch } from "../store";
 import { useDispatch, useSelector } from "react-redux";
+import styles from "./VisibilityFilters.module.css";
 
 const VisibilityFilters: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -13,7 +14,7 @@ const VisibilityFilters: React.FC = () => {
     (state: AppState) => state.visibilityFilter
   );
   return (
-    <div className="visibility-filters">
+    <>
       {(
         Object.keys(VISIBILITY_FILTERS) as Array<
           keyof typeof VISIBILITY_FILTERS
@@ -24,8 +25,8 @@ const VisibilityFilters: React.FC = () => {
           <span
             key={`visibility-filter-${currentFilter}`}
             className={cx(
-              "filter",
-              currentFilter === activeFilter && "filter--active"
+              styles.filter,
+              currentFilter === activeFilter && styles.filterActive
             )}
             onClick={() => dispatch(setFilter(currentFilter))}
           >
@@ -33,7 +34,7 @@ const VisibilityFilters: React.FC = () => {
           </span>
         );
       })}
-    </div>
+    </>
   );
 };
 
