@@ -1,12 +1,18 @@
-import React from "react";
+import { FC } from "react";
 import Todo from "./Todo";
-// import { AppState } from "../store/index";
+import { AppState } from "../store/index";
 import { getTodosByVisibilityFilter } from "../selectors/todo";
 import { TodoItem } from "../types/state/todos";
-import { useSelector } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import styles from "./TodoList.module.css";
+import todosSlice from "../reducers/todosSlice";
 
-const TodoList: React.FC = () => {
+type Props = {
+  todos: TodoItem[];
+};
+
+const TodoList: FC<Props> = ({ todos }) => {
+  // const TodoList: FC = () => {
   // Before
   // const todos: Array<TodoItem> = useSelector((state: AppState) => {
   //   const { visibilityFilter } = state;
@@ -14,7 +20,7 @@ const TodoList: React.FC = () => {
   // });
 
   // After
-  const todos: Array<TodoItem> = useSelector(getTodosByVisibilityFilter);
+  // const todos: Array<TodoItem> = useSelector(getTodosByVisibilityFilter);
 
   return (
     <ul className={styles.todoList}>
@@ -27,4 +33,11 @@ const TodoList: React.FC = () => {
   );
 };
 
-export default TodoList;
+const mapStateToProps = (state: AppState): Props => {
+  const { visibilityFilter } = state;
+  const todos = getTodosByVisibilityFilter(state, visibilityFilter);
+  return { todos };
+};
+
+// export default TodoList;
+export default connect(mapStateToProps)(TodoList);
