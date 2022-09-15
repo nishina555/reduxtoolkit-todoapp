@@ -15,6 +15,7 @@ export const getTodosByVisibilityFilter = (
   visibilityFilter: VisibilityFilterTypes
 ): TodoItem[] => {
   const allTodos = getTodos(store);
+  console.log("getTodosByVisibilityFilter");
   switch (visibilityFilter) {
     case VISIBILITY_FILTERS.COMPLETED:
       return allTodos.filter((todo) => todo.completed);
