@@ -11,6 +11,9 @@ const TodoList: React.FC = () => {
     const { visibilityFilter } = state;
     return getTodosByVisibilityFilter(state, visibilityFilter);
   });
+
+  // const todos: Array<TodoItem> = useSelector(getTodosByVisibilityFilter);
+
   return (
     <ul className="todo-list">
       {todos && todos.length
