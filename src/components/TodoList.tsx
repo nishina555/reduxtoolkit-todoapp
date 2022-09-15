@@ -3,7 +3,6 @@ import Todo from "./Todo";
 // import { AppState } from "../store/index";
 import { getTodosByVisibilityFilter } from "../selectors/todo";
 import { TodoItem } from "../types/state/todos";
-
 import { useSelector } from "react-redux";
 
 const TodoList: React.FC = () => {
