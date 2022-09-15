@@ -1,3 +1,13 @@
+/** counter app **/
+.counter-app {
+  font-family: sans-serif;
+}
+
+.counter-button {
+  margin-left: 0.5rem;
+}
+
+/** todo app **/
 .todo-app {
   font-family: sans-serif;
 }

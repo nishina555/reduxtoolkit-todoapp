@@ -8,7 +8,6 @@ const countSlice = createSlice({
   initialState,
   reducers: {
     plusCount(state) {
-      console.log("puls");
       return (state = ++nextCount);
     },
     minusCount(state) {
