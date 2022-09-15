@@ -3,9 +3,9 @@ import { VisibilityFilterTypes } from "../types/state/visibilityFilter";
 import { VISIBILITY_FILTERS } from "../types/constants/visibilityFilterType";
 import { TodoItem } from "../types/state/todos";
 
-export const getTodoIds = (store: AppState): number[] => store.todos.allIds;
+const getTodoIds = (store: AppState): number[] => store.todos.allIds;
 
-export const getTodos = (store: AppState): Array<TodoItem> =>
+const getTodos = (store: AppState): Array<TodoItem> =>
   getTodoIds(store).map((id) => store.todos.byId[id]);
 
 export const getTodosByVisibilityFilter = (
