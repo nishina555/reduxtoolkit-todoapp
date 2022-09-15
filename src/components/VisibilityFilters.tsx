@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import cx from "classnames";
 import { VISIBILITY_FILTERS } from "../types/constants/visibilityFilterType";
 import { setFilter } from "../reducers/visibilityFilterSlice";
@@ -8,7 +8,7 @@ import { AppDispatch } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./VisibilityFilters.module.css";
 
-const VisibilityFilters: React.FC = () => {
+const VisibilityFilters: FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const activeFilter: VisibilityFilterTypes = useSelector(
     (state: AppState) => state.visibilityFilter
