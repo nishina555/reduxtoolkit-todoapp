@@ -8,13 +8,13 @@ import { useSelector } from "react-redux";
 
 const TodoList: React.FC = () => {
   // Before
-  // const todos: Array<TodoItem> = useSelector((state: AppState) => {
-  //   const { visibilityFilter } = state;
-  //   return getTodosByVisibilityFilter(state, visibilityFilter);
-  // });
+  const todos: Array<TodoItem> = useSelector((state: AppState) => {
+    const { visibilityFilter } = state;
+    return getTodosByVisibilityFilter(state, visibilityFilter);
+  });
 
   // After
-  const todos: Array<TodoItem> = useSelector(getTodosByVisibilityFilter);
+  // const todos: Array<TodoItem> = useSelector(getTodosByVisibilityFilter);
 
   return (
     <ul className="todo-list">
