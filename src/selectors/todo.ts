@@ -5,10 +5,8 @@ import { TodoItem } from "../types/state/todos";
 
 export const getTodoIds = (store: AppState): number[] => store.todos.allIds;
 
-export const getTodoByIds = (store: AppState) => store.todos.byId;
-
 export const getTodos = (store: AppState): Array<TodoItem> =>
-  getTodoIds(store).map((id) => getTodoByIds(store)[id]);
+  getTodoIds(store).map((id) => store.todos.byId[id]);
 
 export const getTodosByVisibilityFilter = (
   store: AppState,
