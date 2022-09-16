@@ -10,7 +10,7 @@ import { visibilityFilter } from "./visibilityFilter";
 const todos = (state: AppState): TodoState => state.todos;
 const getTodoIds = (state: AppState): number[] => todos(state).allIds;
 const getTodosById = (state: AppState) => todos(state).byId;
-const getTodos = (state: AppState): Array<TodoItem> =>
+const getTodos = (state: AppState): TodoItem[] =>
   getTodoIds(state).map((id) => getTodosById(state)[id]);
 export const getTodosByVisibilityFilter = (
   state: AppState,
