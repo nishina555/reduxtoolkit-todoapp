@@ -3,21 +3,21 @@ import { VisibilityFilterTypes } from "../types/state/visibilityFilter";
 import { VISIBILITY_FILTERS } from "../types/constants/visibilityFilterType";
 import { TodoState, TodoItem } from "../types/state/todos";
 // import { TodoState } from "../types/state/todos";
-import { createSelector } from "@reduxjs/toolkit";
-import { visibilityFilter } from "./visibilityFilter";
+// import { createSelector } from "@reduxjs/toolkit";
+// import { selectVisibilityFilter } from "./visibilityFilter";
 
 // Before
 const todos = (state: AppState): TodoState => state.todos;
-const getTodoIds = (state: AppState): number[] => todos(state).allIds;
-const getTodosById = (state: AppState) => todos(state).byId;
-const getTodos = (state: AppState): TodoItem[] =>
-  getTodoIds(state).map((id) => getTodosById(state)[id]);
-export const getTodosByVisibilityFilter = (
+const selectTodoIds = (state: AppState): number[] => todos(state).allIds;
+const selectTodosById = (state: AppState) => todos(state).byId;
+const selectTodos = (state: AppState): TodoItem[] =>
+  selectTodoIds(state).map((id) => selectTodosById(state)[id]);
+export const selectTodosByVisibilityFilter = (
   state: AppState,
   visibilityFilter: VisibilityFilterTypes
 ): TodoItem[] => {
-  const allTodos = getTodos(state);
   console.log("Selector is called");
+  const allTodos = selectTodos(state);
   switch (visibilityFilter) {
     case VISIBILITY_FILTERS.COMPLETED:
       return allTodos.filter((todo) => todo.completed);
@@ -31,16 +31,14 @@ export const getTodosByVisibilityFilter = (
 
 // After
 // const todos = (state: AppState): TodoState => state.todos;
-// const getTodoIds = createSelector([todos], (todos) => todos.allIds);
-// const getTodosById = createSelector([todos], (todos) => todos.byId);
-
-// const getTodos = createSelector(
-//   [getTodoIds, getTodosById],
+// const selectTodoIds = createSelector([todos], (todos) => todos.allIds);
+// const selectTodosById = createSelector([todos], (todos) => todos.byId);
+// const selectTodos = createSelector(
+//   [selectTodoIds, selectTodosById],
 //   (todoIds, todosById) => todoIds.map((id) => todosById[id])
 // );
-
-// export const getTodosByVisibilityFilter = createSelector(
-//   [getTodos, visibilityFilter],
+// export const selectTodosByVisibilityFilter = createSelector(
+//   [selectTodos, selectVisibilityFilter],
 //   (todos, visibilityFilter) => {
 //     console.log("Selector is called");
 //     switch (visibilityFilter) {

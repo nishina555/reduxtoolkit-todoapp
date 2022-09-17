@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Todo from "./Todo";
 import { AppState } from "../store/index";
-import { getTodosByVisibilityFilter } from "../selectors/todo";
+import { selectTodosByVisibilityFilter } from "../selectors/todo";
 import { TodoItem } from "../types/state/todos";
 // import { connect, useSelector } from "react-redux";
 import { useSelector } from "react-redux";
@@ -12,11 +12,11 @@ const TodoList: FC = () => {
   // Before
   const todos: Array<TodoItem> = useSelector((state: AppState) => {
     const { visibilityFilter } = state;
-    return getTodosByVisibilityFilter(state, visibilityFilter);
+    return selectTodosByVisibilityFilter(state, visibilityFilter);
   });
 
   // After
-  // const todos: Array<TodoItem> = useSelector(getTodosByVisibilityFilter);
+  // const todos: Array<TodoItem> = useSelector(selectTodosByVisibilityFilter);
 
   return (
     <ul className={styles.todoList}>
