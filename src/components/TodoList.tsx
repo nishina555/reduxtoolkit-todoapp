@@ -10,13 +10,13 @@ import styles from "./TodoList.module.css";
 
 const TodoList: FC = () => {
   // Before
-  const todos: Array<TodoItem> = useSelector((state: AppState) => {
+  const todos: TodoItem[] = useSelector((state: AppState) => {
     const { visibilityFilter } = state;
     return selectTodosByVisibilityFilter(state, visibilityFilter);
   });
 
   // After
-  // const todos: Array<TodoItem> = useSelector(selectTodosByVisibilityFilter);
+  // const todos: TodoItem[] = useSelector(selectTodosByVisibilityFilter);
 
   return (
     <ul className={styles.todoList}>
