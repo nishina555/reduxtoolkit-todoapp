@@ -1,5 +1,5 @@
 export type TodoState = {
-  allIds: Array<number>;
+  allIds: number[];
   byId: { [key: number]: TodoItem };
 };
 
