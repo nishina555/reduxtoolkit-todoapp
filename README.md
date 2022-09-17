@@ -1,4 +1,4 @@
-React Reduxの公式ドキュメント内で紹介されている[Basic Tutorial](https://react-redux.js.org/introduction/basic-tutorial)のTodoアプリをRedux ToolkitのAPIを利用して実装したものです。
+React Reduxの公式ドキュメント内で紹介されている[Tutorial](https://react-redux.js.org/introduction/basic-tutorial)のTodoアプリをRedux ToolkitのAPIを利用して実装したものです。
 
 `yarn start`で画面が表示できます。
 
